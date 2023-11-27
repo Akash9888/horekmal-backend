@@ -210,3 +210,19 @@ class OrderSerializer(serializers.ModelSerializer):
         user = obj.user
         serializer = UserLoginSerializer(user, many=False)
         return serializer.data
+
+
+class SessionSerializer(serializers.Serializer):
+    total_amount = serializers.DecimalField(max_digits=10, decimal_places=2,required=True)
+    transId = serializers.CharField(max_length=50,allow_null=False, allow_blank=False)
+    successUrl = serializers.URLField(allow_null=False, allow_blank=False)
+    failUrl = serializers.URLField(allow_null=False, allow_blank=False)
+    cancelUrl = serializers.URLField(allow_null=False, allow_blank=False)
+    ipnUrl = serializers.URLField(allow_null=False, allow_blank=False)
+    name = serializers.CharField(max_length=254,allow_null=False, allow_blank=False)
+    email = serializers.EmailField(max_length=254,allow_null=False, allow_blank=False)
+    address= serializers.CharField(max_length=100,allow_null=False, allow_blank=False)
+    city = serializers.CharField(max_length=50,allow_null=False, allow_blank=False)
+    postalCode = serializers.CharField(max_length=20,allow_null=False, allow_blank=False)
+    country = serializers.CharField(max_length=50,allow_null=False, allow_blank=False)
+    phone = serializers.CharField(max_length=50,allow_null=False, allow_blank=False)
